@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import {
@@ -23,6 +22,9 @@ export default function SalesChart() {
   const [chartType, setChartType] = useState<"bar" | "line" | "pie">("bar");
 
   const filteredData = rawData.filter((d) => d.sales >= minSales);
+
+  // Maximum sales value for the range slider
+  const maxSales = Math.max(...rawData.map((d) => d.sales), 1000);
 
   return (
     <div style={{
@@ -64,9 +66,13 @@ export default function SalesChart() {
           <input
             id="minSales"
             type="number"
-            placeholder="e.g. 500"
+            placeholder="e.g. 123"
             value={minSales}
-            onChange={(e) => setMinSales(Number(e.target.value))}
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              setMinSales(value >= 0 ? value : 0);
+            }}
+            step={1}
             style={{
               padding: "8px 12px",
               width: "200px",
@@ -80,6 +86,27 @@ export default function SalesChart() {
             onFocus={(e) => (e.target.style.borderColor = "#3b82f6")}
             onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
           />
+          <input
+            type="range"
+            min={0}
+            max={maxSales}
+            step={100}
+            value={minSales}
+            onChange={(e) => setMinSales(Number(e.target.value))}
+            style={{
+              width: "200px",
+              marginTop: "8px",
+              accentColor: "#3b82f6",
+              cursor: "pointer"
+            }}
+          />
+          <div style={{
+            fontSize: "12px",
+            color: "#6b7280",
+            marginTop: "4px"
+          }}>
+            Current: {minSales}
+          </div>
         </div>
 
         <div style={{
