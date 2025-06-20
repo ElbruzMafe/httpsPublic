@@ -191,7 +191,7 @@ export default function SalesChart() {
               fontSize: "14px",
               fontWeight: "500",
               cursor: "pointer",
-              transition: "all 0.2s",
+transition: "all 0.2s",
               boxShadow: chartType === "pie" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none",
             }}
             onMouseOver={(e) => {
@@ -213,7 +213,7 @@ export default function SalesChart() {
         {chartType === "bar" && (
           <BarChart data={filteredData}>
             <XAxis dataKey="year" />
-            < Hungarians: 0
+            <YAxis />
             <Tooltip />
             <Bar dataKey="sales" fill="#3b82f6" />
           </BarChart>
