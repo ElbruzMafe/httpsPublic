@@ -27,29 +27,35 @@ export default function SalesChart() {
   const maxSales = Math.max(...rawData.map((d) => d.sales), 1000);
 
   return (
-    <div style={{
-      padding: "24px",
-      maxWidth: "800px",
-      margin: "0 auto",
-      backgroundColor: "#f9fafb",
-      borderRadius: "8px",
-      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
-    }}>
-      <h2 style={{
-        fontSize: "24px",
-        fontWeight: "600",
-        color: "#1f2937",
-        marginBottom: "16px"
-      }}>
+    <div
+      style={{
+        padding: "24px",
+        maxWidth: "800px",
+        margin: "0 auto",
+        backgroundColor: "#f9fafb",
+        borderRadius: "8px",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "24px",
+          fontWeight: "600",
+          color: "#1f2937",
+          marginBottom: "16px",
+        }}
+      >
         Sales Dashboard
       </h2>
 
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        marginBottom: "24px"
-      }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          marginBottom: "24px",
+        }}
+      >
         <div>
           <label
             htmlFor="minSales"
@@ -58,7 +64,7 @@ export default function SalesChart() {
               fontSize: "16px",
               fontWeight: "500",
               color: "#374151",
-              marginBottom: "8px"
+              marginBottom: "8px",
             }}
           >
             Minimum Sales Threshold
@@ -81,10 +87,14 @@ export default function SalesChart() {
               fontSize: "14px",
               outline: "none",
               transition: "border-color 0.2s",
-              boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)"
+              boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
             }}
-            onFocus={(e) => (e.target.style.borderColor = "#3b82f6")}
-            onBlur={(e) => (e.target.style.borderColor = "#d1d5db")}
+            onFocus={(e) => {
+              e.target.style.borderColor = "#3b82f6"; // Use block body
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = "#d1d5db"; // Use block body
+            }}
           />
           <input
             type="range"
@@ -97,23 +107,27 @@ export default function SalesChart() {
               width: "200px",
               marginTop: "8px",
               accentColor: "#3b82f6",
-              cursor: "pointer"
+              cursor: "pointer",
             }}
           />
-          <div style={{
-            fontSize: "12px",
-            color: "#6b7280",
-            marginTop: "4px"
-          }}>
+          <div
+            style={{
+              fontSize: "12px",
+              color: "#6b7280",
+              marginTop: "4px",
+            }}
+          >
             Current: {minSales}
           </div>
         </div>
 
-        <div style={{
-          display: "flex",
-          gap: "12px",
-          flexWrap: "wrap"
-        }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "12px",
+            flexWrap: "wrap",
+          }}
+        >
           <button
             onClick={() => setChartType("bar")}
             style={{
@@ -126,13 +140,17 @@ export default function SalesChart() {
               fontWeight: "500",
               cursor: "pointer",
               transition: "all 0.2s",
-              boxShadow: chartType === "bar" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none"
+              boxShadow: chartType === "bar" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none",
             }}
             onMouseOver={(e) => {
-              if (chartType !== "bar") e.currentTarget.style.backgroundColor = "#d1d5db";
+              if (chartType !== "bar") {
+                e.currentTarget.style.backgroundColor = "#d1d5db";
+              }
             }}
             onMouseOut={(e) => {
-              if (chartType !== "bar") e.currentTarget.style.backgroundColor = "#e5e7eb";
+              if (chartType !== "bar") {
+                e.currentTarget.style.backgroundColor = "#e5e7eb";
+              }
             }}
           >
             Bar
@@ -149,13 +167,17 @@ export default function SalesChart() {
               fontWeight: "500",
               cursor: "pointer",
               transition: "all 0.2s",
-              boxShadow: chartType === "line" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none"
+              boxShadow: chartType === "line" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none",
             }}
             onMouseOver={(e) => {
-              if (chartType !== "line") e.currentTarget.style.backgroundColor = "#d1d5db";
+              if (chartType !== "line") {
+                e.currentTarget.style.backgroundColor = "#d1d5db";
+              }
             }}
             onMouseOut={(e) => {
-              if (chartType !== "line") e.currentTarget.style.backgroundColor = "#e5e7eb";
+              if (chartType !== "line") {
+                e.currentTarget.style.backgroundColor = "#e5e7eb";
+              }
             }}
           >
             Line
@@ -172,13 +194,17 @@ export default function SalesChart() {
               fontWeight: "500",
               cursor: "pointer",
               transition: "all 0.2s",
-              boxShadow: chartType === "pie" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none"
+              boxShadow: chartType === "pie" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none",
             }}
             onMouseOver={(e) => {
-              if (chartType !== "pie") e.currentTarget.style.backgroundColor = "#d1d5db";
+              if (chartType !== "pie") {
+                e.currentTarget.style.backgroundColor = "#d1d5db";
+              }
             }}
             onMouseOut={(e) => {
-              if (chartType !== "pie") e.currentTarget.style.backgroundColor = "#e5e7eb";
+              if (chartType !== "pie") {
+                e.currentTarget.style.backgroundColor = "#e5e7eb";
+              }
             }}
           >
             Pie
