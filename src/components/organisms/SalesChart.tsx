@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 "use client";
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 import { useState } from "react";
 import {
   BarChart,
@@ -22,8 +24,6 @@ export default function SalesChart() {
   const [chartType, setChartType] = useState<"bar" | "line" | "pie">("bar");
 
   const filteredData = rawData.filter((d) => d.sales >= minSales);
-
-  // Maximum sales value for the range slider
   const maxSales = Math.max(...rawData.map((d) => d.sales), 1000);
 
   return (
@@ -47,7 +47,6 @@ export default function SalesChart() {
       >
         Sales Dashboard
       </h2>
-
       <div
         style={{
           display: "flex",
@@ -90,10 +89,10 @@ export default function SalesChart() {
               boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
             }}
             onFocus={(e) => {
-              e.target.style.borderColor = "#3b82f6"; // Use block body
+              e.target.style.borderColor = "#3b82f6";
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = "#d1d5db"; // Use block body
+              e.target.style.borderColor = "#d1d5db";
             }}
           />
           <input
@@ -120,7 +119,6 @@ export default function SalesChart() {
             Current: {minSales}
           </div>
         </div>
-
         <div
           style={{
             display: "flex",
@@ -193,7 +191,7 @@ export default function SalesChart() {
               fontSize: "14px",
               fontWeight: "500",
               cursor: "pointer",
-              transition: "all 0.2s",
+transition: "all 0.2s",
               boxShadow: chartType === "pie" ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "none",
             }}
             onMouseOver={(e) => {
@@ -211,7 +209,6 @@ export default function SalesChart() {
           </button>
         </div>
       </div>
-
       <ResponsiveContainer width="100%" height={300}>
         {chartType === "bar" && (
           <BarChart data={filteredData}>
