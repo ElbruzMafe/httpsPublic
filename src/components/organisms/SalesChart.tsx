@@ -187,40 +187,50 @@ export default function SalesChart() {
       </div>
 
       <ResponsiveContainer width="100%" height={300}>
-        {chartType === "bar" && (
-          <BarChart data={filteredData}>
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="sales" fill="#3b82f6" />
-          </BarChart>
-        )}
-        {chartType === "line" && (
-          <LineChart data={filteredData}>
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="sales" stroke="#10b981" strokeWidth={2} />
-          </LineChart>
-        )}
-        {chartType === "pie" && (
-          <PieChart>
-            <Tooltip />
-            <Pie
-              data={filteredData}
-              dataKey="sales"
-              nameKey="year"
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              label
-            >
-              {filteredData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-          </PieChart>
-        )}
+        <>
+          {chartType === "bar" && (
+            <BarChart data={filteredData}>
+              <XAxis dataKey="year" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="sales" fill="#3b82f6" />
+            </BarChart>
+          )}
+          {chartType === "line" && (
+            <LineChart data={filteredData}>
+              <XAxis dataKey="year" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="sales"
+                stroke="#10b981"
+                strokeWidth={2}
+              />
+            </LineChart>
+          )}
+          {chartType === "pie" && (
+            <PieChart>
+              <Tooltip />
+              <Pie
+                data={filteredData}
+                dataKey="sales"
+                nameKey="year"
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                label
+              >
+                {filteredData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+            </PieChart>
+          )}
+        </>
       </ResponsiveContainer>
     </div>
   );
